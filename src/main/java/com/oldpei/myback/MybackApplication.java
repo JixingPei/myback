@@ -12,7 +12,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 @MapperScan("com.oldpei.myback.dao")
 public class MybackApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(MybackApplication.class, args);
     }
