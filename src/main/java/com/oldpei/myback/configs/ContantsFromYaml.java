@@ -13,7 +13,7 @@ import org.springframework.context.annotation.PropertySource;
 @Configuration
 @ConfigurationProperties(prefix = "oldpei")
 @PropertySource(value = {"classpath:application.yml"}, factory = YamlConfigFactory.class)
-public class Contants {
+public class ContantsFromYaml {
 
     private String filepath;
 
