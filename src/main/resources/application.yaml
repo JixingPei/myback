@@ -1,2 +1,34 @@
 server:
   port: 8888
+
+#spring:
+#  profiles:
+#    active: aeolian
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/personInfo?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
+#    username: root
+#    password: 1234
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  devtools:
+    restart:
+      enabled: true  #设置开启热部署
+      additional-paths: src/main/java #重启目录
+  freemarker:
+    cache: false    #页面不加载缓存，修改即时生效
+
+#mybatis:
+#  mapper-locations: mapper/*.xml
+#  type-aliases-package: com.oldpei.personinfo.model
+#  configuration:
+#    map-underscore-to-camel-case: true
+#
+#
+#redis:
+#  host: localhost
+#  port: 6379
+#  max-wait: 30000
+#  max-active: 100
+#  max-idle: 20
+#  min-dile: 0
+#  timeout: 3000
