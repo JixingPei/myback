@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
 /**
  * LDAPAuthentication class.
  * 
- * @author ben.zhang
+ * @author jixing.pei
  * @version 1.0
  */
 @Component

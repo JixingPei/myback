@@ -13,7 +13,7 @@ import org.springframework.core.io.support.EncodedResource;
 
 /**
  * YamlConfigFactory
- * @author ben.zhang
+ * @author jixing.pei
  *
  */
 public class YamlConfigFactory extends DefaultPropertySourceFactory {

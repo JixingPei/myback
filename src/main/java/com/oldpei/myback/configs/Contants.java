@@ -7,7 +7,7 @@ import org.springframework.context.annotation.PropertySource;
 /**
  * papyless cunstom Configuration class.
  *
- * @author ben.zhang
+ * @author jixing.pei
  * @version 1.0
  */
 @Configuration

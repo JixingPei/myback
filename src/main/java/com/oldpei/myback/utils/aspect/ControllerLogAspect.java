@@ -17,7 +17,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 /**
  * ControllerLogAspect class.
  * 
- * @author ben.zhang
+ * @author jixing.pei
  * @version 1.0
  */
 @Aspect

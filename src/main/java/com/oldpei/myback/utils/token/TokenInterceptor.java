@@ -9,7 +9,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 /**
  * Token Interceptor class.
  * 
- * @author ben.zhang
+ * @author jixing.pei
  * @version 1.0
  */
 @Component

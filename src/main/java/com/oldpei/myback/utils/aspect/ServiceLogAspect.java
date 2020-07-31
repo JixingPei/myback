@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 /**
  * ServiceLogAspect class.
  * 
- * @author ben.zhang
+ * @author jixing.pei
  * @version 1.0
  */
 @Aspect

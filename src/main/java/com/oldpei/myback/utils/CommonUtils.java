@@ -2,7 +2,7 @@ package com.oldpei.myback.utils;
 
 /**
 * CommonUtils class.
-* @author ben.zhang
+* @author jixing.pei
 * @version 1.0
 */
 public class CommonUtils {

@@ -2,7 +2,7 @@ package com.oldpei.myback.utils;
 
 /**
 * common constants class.
-* @author ben.zhang
+* @author jixing.pei
 * @version 1.0
 */
 public class CommonConstants {

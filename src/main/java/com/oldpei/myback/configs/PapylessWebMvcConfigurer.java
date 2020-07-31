@@ -14,7 +14,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
  * papyless cunstom Configuration class.
- * @author ben.zhang
+ * @author jixing.pei
  * @version 1.0
  */
 @Configuration

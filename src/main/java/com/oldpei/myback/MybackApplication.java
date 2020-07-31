@@ -2,7 +2,12 @@ package com.oldpei.myback;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
+/**
+ * SpringBoot Application class.
+ *
+ * @author jixing.pei
+ * @version 1.0
+ */
 @SpringBootApplication
 public class MybackApplication {
 
