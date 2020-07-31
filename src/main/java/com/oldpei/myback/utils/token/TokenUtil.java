@@ -15,7 +15,7 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 
 /**
 * Token Interceptor class.
-* @author ben.zhang
+* @author jixing.pei
 * @version 1.0
 */
 @Component
