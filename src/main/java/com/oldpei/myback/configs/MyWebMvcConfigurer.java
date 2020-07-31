@@ -13,7 +13,7 @@ import java.util.List;
 @Configuration
 public class MyWebMvcConfigurer implements WebMvcConfigurer {
     @Autowired
-    private Contants contants;
+    private ContantsFromYaml contants;
 
     /**
      * Cross-domain problem solving

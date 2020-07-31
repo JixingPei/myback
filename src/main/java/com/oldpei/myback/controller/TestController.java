@@ -1,13 +1,14 @@
 package com.oldpei.myback.controller;
 
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class TestController {
 
-    @PostMapping("/test")
+    @GetMapping("/test")
     public String test() {
         ModelMap model = new ModelMap();
         System.out.println("kaishi");

@@ -7,4 +7,6 @@ import java.util.List;
 @Service
 public interface PhotoService {
     List<String> getFileDate();
+
+    List<List> getFilePathNamrList(List<String> dateLiat);
 }
