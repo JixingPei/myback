@@ -1,14 +1,13 @@
 server:
   port: 8888
-
-#spring:
-#  profiles:
-#    active: aeolian
-#  datasource:
-#    url: jdbc:mysql://localhost:3306/personInfo?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
-#    username: root
-#    password: 1234
-#    driver-class-name: com.mysql.cj.jdbc.Driver
+  #spring:
+  #  profiles:
+  #    active: aeolian
+  #  datasource:
+  #    url: jdbc:mysql://localhost:3306/personInfo?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
+  #    username: root
+  #    password: 1234
+  #    driver-class-name: com.mysql.cj.jdbc.Driver
 
   devtools:
     restart:
@@ -32,3 +31,7 @@ server:
 #  max-idle: 20
 #  min-dile: 0
 #  timeout: 3000
+
+
+oldpei:
+  filepath: C:\Users\jixing.pei\Desktop\img\
