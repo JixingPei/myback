@@ -22,13 +22,13 @@ public class MyPhotoController {
     public ModelMap getPhoto() {
         ModelMap model = new ModelMap();
         List<String> dateList = photoService.getFileDate();
-        List<List> filePathNamrList = new ArrayList<>();
+        List<List> filePathNameList = new ArrayList<>();
         if (CommonUtils.listNonNull(dateList)) {
-            filePathNamrList = photoService.getFilePathNamrList(dateList);
+            filePathNameList = photoService.getFilePathNamrList(dateList);
         }
         model.addAttribute("code", ConstantCode.succeed_code);
         model.addAttribute("dateList", dateList);
-        model.addAttribute("filePathNamrList", filePathNamrList);
+        model.addAttribute("filePathNameList", filePathNameList);
         return model;
     }
 
