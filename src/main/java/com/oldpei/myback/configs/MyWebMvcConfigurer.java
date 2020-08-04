@@ -1,5 +1,6 @@
 package com.oldpei.myback.configs;
 
+import com.oldpei.myback.interceptor.MyInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
@@ -14,7 +15,8 @@ import java.util.List;
 public class MyWebMvcConfigurer implements WebMvcConfigurer {
     @Autowired
     private ContantsFromYaml contants;
-
+    @Autowired
+    private MyInterceptor myInterceptor;
     /**
      * Cross-domain problem solving
      *
@@ -38,4 +40,17 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
         registry.addResourceHandler("/img/**").addResourceLocations("file:" + contants.getFilepath());
     }
 
+    /**
+     * URL blocking configuration
+     * @param registry
+     */
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        List<String> excludePath = new ArrayList<>();
+        excludePath.add("/static/**");
+        registry.addInterceptor(myInterceptor)
+                .addPathPatterns("/**")
+                .excludePathPatterns(excludePath);
+        WebMvcConfigurer.super.addInterceptors(registry);
+    }
 }
