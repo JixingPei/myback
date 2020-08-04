@@ -16,6 +16,8 @@ import org.springframework.context.annotation.PropertySource;
 public class ContantsFromYaml {
 
     private String filepath;
+    private String expiretime;
+    private String tokensecret;
 
     public String getFilepath() {
         return filepath;
@@ -25,4 +27,19 @@ public class ContantsFromYaml {
         this.filepath = filepath;
     }
 
+    public String getExpiretime() {
+        return expiretime;
+    }
+
+    public void setExpiretime(String expiretime) {
+        this.expiretime = expiretime;
+    }
+
+    public String getTokensecret() {
+        return tokensecret;
+    }
+
+    public void setTokensecret(String tokensecret) {
+        this.tokensecret = tokensecret;
+    }
 }
