@@ -1,21 +1,23 @@
 package com.oldpei.myback.model;
 
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Set;
 
+/**
+ * @author jixing.pei
+ */
 public class Photo {
     public static Set<Photo> set;
 
     Date date;
     String type;
-    String Name;
+    String name;
     String path;
 
     public Photo(Date date, String type, String name, String path) {
         this.date = date;
         this.type = type;
-        Name = name;
+        this.name = name;
         this.path = path;
     }
 
@@ -44,11 +46,11 @@ public class Photo {
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getPath() {

@@ -9,26 +9,26 @@ import org.springframework.stereotype.Component;
 
 /**
  * ServiceLogAspect class.
- * 
+ *
  * @author jixing.pei
  * @version 1.0
  */
 @Aspect
 @Component
 public class ServiceLogAspect {
-	private static final Logger LOGGER = LoggerFactory.getLogger(ServiceLogAspect.class);
-	
-	@Around("execution(* com.sbibits.papyless.service.impl..*.*(..))")
+    private static final Logger LOGGER = LoggerFactory.getLogger(ServiceLogAspect.class);
+
+    @Around("execution(* com.sbibits.papyless.service.impl..*.*(..))")
     public Object recordTimeLog(ProceedingJoinPoint joinPoint) throws Throwable {
-		
-		LOGGER.info("====== start {}.{} ======",
+
+        LOGGER.info("====== start {}.{} ======",
                 joinPoint.getTarget().getClass(),
                 joinPoint.getSignature().getName());
 
         // do service
         Object result = joinPoint.proceed();
-        
-		LOGGER.info("====== end {}.{} ======",
+
+        LOGGER.info("====== end {}.{} ======",
                 joinPoint.getTarget().getClass(),
                 joinPoint.getSignature().getName());
 
