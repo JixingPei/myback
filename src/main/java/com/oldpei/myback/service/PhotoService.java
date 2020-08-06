@@ -1,5 +1,6 @@
 package com.oldpei.myback.service;
 
+import com.oldpei.myback.model.Photo;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -11,5 +12,5 @@ public interface PhotoService {
 
     List<List> getFilePathNamrList(List<String> dateLiat);
 
-    void uploadPhoto(MultipartFile file);
+    void uploadPhoto(MultipartFile file, Photo photo);
 }

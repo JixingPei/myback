@@ -1,5 +1,6 @@
 package com.oldpei.myback.controller;
 
+import com.oldpei.myback.model.Photo;
 import com.oldpei.myback.service.PhotoService;
 import com.oldpei.myback.utils.CommonUtils;
 import com.oldpei.myback.utils.constant.ConstantCode;
@@ -34,8 +35,8 @@ public class MyPhotoController {
     }
 
     @PostMapping("/uploadPhoto")
-    public ModelMap uploadPhoto(@RequestParam("file") MultipartFile file){
-        photoService.uploadPhoto(file);
+    public ModelMap uploadPhoto(@RequestParam("file") MultipartFile file, Photo photo){
+        photoService.uploadPhoto(file,photo);
         ModelMap model = new ModelMap();
         model.addAttribute("code", ConstantCode.succeed_code);
         return model;

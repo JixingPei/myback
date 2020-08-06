@@ -1,0 +1,11 @@
+FROM nginx
+
+ENV DIR_APP="/opt/myphoto"
+
+ENV LANG=en_US.UTF-8
+
+RUN ln -sf /usr/share/zoneinfo/Asia/Beijing /etc/localtime
+
+RUN mkdir -p ${DIR_APP}/myfront
+
+COPY ./dist/* ${DIR_APP}/myfront/

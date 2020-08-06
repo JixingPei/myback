@@ -1,0 +1,13 @@
+FROM jdk11
+
+ENV DIR_APP="/opt/myphoto"
+
+ENV LANG=en_US.UTF-8
+
+RUN ln -sf /usr/share/zoneinfo/Asia/Beijing /etc/localtime
+
+RUN mkdir -p ${DIR_APP}/myback
+
+COPY ./myback.jar ${DIR_APP}/myback/
+
+ENTRYPOINT java -jar ${DIR_APP}/myback/myback.jar

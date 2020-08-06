@@ -9,12 +9,12 @@ import java.util.Set;
 public class Photo {
     public static Set<Photo> set;
 
-    Date date;
+    String date;
     String type;
     String name;
     String path;
 
-    public Photo(Date date, String type, String name, String path) {
+    public Photo(String date, String type, String name, String path) {
         this.date = date;
         this.type = type;
         this.name = name;
@@ -29,11 +29,11 @@ public class Photo {
         Photo.set = set;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

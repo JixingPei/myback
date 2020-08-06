@@ -1,6 +1,7 @@
 package com.oldpei.myback.service.impl;
 
 import com.oldpei.myback.configs.ContantsFromYaml;
+import com.oldpei.myback.model.Photo;
 import com.oldpei.myback.service.PhotoService;
 import com.oldpei.myback.utils.CommonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +46,7 @@ public class PhotoServiceImpl implements PhotoService {
     }
 
     @Override
-    public void uploadPhoto(MultipartFile file) {
+    public void uploadPhoto(MultipartFile file, Photo photo) {
 // 获取文件名称
         String fileName = file.getOriginalFilename();
         System.out.println(fileName);
@@ -61,12 +62,8 @@ public class PhotoServiceImpl implements PhotoService {
         // String extension = FilenameUtils.getExtension(fileName);
         // 获取配置路径
         String path = contantsFromYaml.getFilepath();
-
-        Calendar calendar = Calendar.getInstance();
-        // get current instance of the calendar
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
-        String today = formatter.format(calendar.getTime());
-        String newPath = path + today + "\\";
+        String date = photo.getDate();
+        String newPath = path + date + "\\";
         File newDir = new File(newPath);
         if (!newDir.exists()) {
             newDir.mkdirs(); // 目录不存在的情况下，创建目录

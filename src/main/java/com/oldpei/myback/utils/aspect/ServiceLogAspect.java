@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
 public class ServiceLogAspect {
     private static final Logger LOGGER = LoggerFactory.getLogger(ServiceLogAspect.class);
 
-    @Around("execution(* com.sbibits.papyless.service.impl..*.*(..))")
+    @Around("execution(* com.oldpei.service.impl..*.*(..))")
     public Object recordTimeLog(ProceedingJoinPoint joinPoint) throws Throwable {
 
         LOGGER.info("====== start {}.{} ======",
