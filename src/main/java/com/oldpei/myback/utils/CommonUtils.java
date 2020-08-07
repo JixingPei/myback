@@ -40,7 +40,7 @@ public class CommonUtils {
     /**
      * format null string to ""
      *
-     * @param str
+     * @param list
      * @return String
      */
     public static boolean listNonNull(List<?> list) {
@@ -51,3 +51,4 @@ public class CommonUtils {
         }
     }
 }
+

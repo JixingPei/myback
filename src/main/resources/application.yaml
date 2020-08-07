@@ -34,6 +34,6 @@ server:
 
 
 oldpei:
-  filepath: C:\Users\jixing.pei\Desktop\img\
+  filepath: /opt/myphoto/photo/
   expiretime: 36000000
   tokensecret: oldpeisecret

@@ -20,6 +20,17 @@ public class MyPhotoController {
 
     @Autowired
     PhotoService photoService;
+
+    @GetMapping("photowall")
+    public ModelMap getPhotoWall() {
+        ModelMap model = new ModelMap();
+        List<String> filePathNameList = photoService.getPhotoWall();
+        model.addAttribute("code", ConstantCode.succeed_code);
+        model.addAttribute("filePathNameList", filePathNameList);
+        return model;
+    }
+
+
     @GetMapping("/photo")
     public ModelMap getPhoto() {
         ModelMap model = new ModelMap();
@@ -35,8 +46,8 @@ public class MyPhotoController {
     }
 
     @PostMapping("/uploadPhoto")
-    public ModelMap uploadPhoto(@RequestParam("file") MultipartFile file, Photo photo){
-        photoService.uploadPhoto(file,photo);
+    public ModelMap uploadPhoto(@RequestParam("file") MultipartFile file, Photo photo) {
+        photoService.uploadPhoto(file, photo);
         ModelMap model = new ModelMap();
         model.addAttribute("code", ConstantCode.succeed_code);
         return model;

@@ -13,4 +13,6 @@ public interface PhotoService {
     List<List> getFilePathNamrList(List<String> dateLiat);
 
     void uploadPhoto(MultipartFile file, Photo photo);
+
+    List<String> getPhotoWall();
 }

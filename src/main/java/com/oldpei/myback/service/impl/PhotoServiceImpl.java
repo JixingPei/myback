@@ -37,7 +37,7 @@ public class PhotoServiceImpl implements PhotoService {
             List<String> tempList = Arrays.asList(new File(contantsFromYaml.getFilepath() + dateLiat.get(i)).list());
             if (CommonUtils.listNonNull(tempList)) {
                 for (int j = 0; j < tempList.size(); j++) {
-                    tempFileList.add("http://localhost:8888/img/" + dateLiat.get(i) + "/" + tempList.get(j));
+                    tempFileList.add("/img/" + dateLiat.get(i) + "/" + tempList.get(j));
                 }
             }
             filePathNamrList.add(tempFileList);
@@ -63,6 +63,12 @@ public class PhotoServiceImpl implements PhotoService {
         // 获取配置路径
         String path = contantsFromYaml.getFilepath();
         String date = photo.getDate();
+        if (CommonUtils.strIsEmpty(date)) {
+            // get current instance of the calendar
+            Calendar calendar = Calendar.getInstance();
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+            date = formatter.format(calendar.getTime());
+        }
         String newPath = path + date + "\\";
         File newDir = new File(newPath);
         if (!newDir.exists()) {
@@ -70,11 +76,26 @@ public class PhotoServiceImpl implements PhotoService {
         }
         File newFile = new File(newDir, fileName);
         //通过CommonsMultipartFile的方法直接写文件（注意这个时候）
-
         try {
             file.transferTo(newFile);
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public List<String> getPhotoWall() {
+        List<String> fileList = new ArrayList<>();
+        List<String> tempList = new ArrayList<>();
+        String path = contantsFromYaml.getFilepath() + "photowall";
+        File filePath = new File(path);
+        if (Objects.nonNull(filePath.list())) {
+            tempList = Arrays.asList(filePath.list());
+            for (String fileName : tempList
+            ) {
+                fileList.add("/img/" + fileName);
+            }
+        }
+        return fileList;
     }
 }
