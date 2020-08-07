@@ -5,6 +5,7 @@ import com.oldpei.myback.model.Photo;
 import com.oldpei.myback.service.PhotoService;
 import com.oldpei.myback.utils.CommonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -17,6 +18,9 @@ import java.util.*;
 public class PhotoServiceImpl implements PhotoService {
     @Autowired
     ContantsFromYaml contantsFromYaml;
+    @Autowired
+    Environment environment;
+
 
     @Override
     public List<String> getFileDate() {
@@ -30,6 +34,7 @@ public class PhotoServiceImpl implements PhotoService {
 
     @Override
     public List<List> getFilePathNamrList(List<String> dateLiat) {
+        String port = environment.getProperty("local.server.port");
         List<List> filePathNamrList = new ArrayList<>();
         List<String> tempFileList;
         for (int i = 0; i < dateLiat.size(); i++) {
@@ -37,7 +42,7 @@ public class PhotoServiceImpl implements PhotoService {
             List<String> tempList = Arrays.asList(new File(contantsFromYaml.getFilepath() + dateLiat.get(i)).list());
             if (CommonUtils.listNonNull(tempList)) {
                 for (int j = 0; j < tempList.size(); j++) {
-                    tempFileList.add("/img/" + dateLiat.get(i) + "/" + tempList.get(j));
+                    tempFileList.add("http://localhost:" + port + "/img/" + dateLiat.get(i) + "/" + tempList.get(j));
                 }
             }
             filePathNamrList.add(tempFileList);
@@ -83,8 +88,10 @@ public class PhotoServiceImpl implements PhotoService {
         }
     }
 
+
     @Override
     public List<String> getPhotoWall() {
+        String port = environment.getProperty("local.server.port");
         List<String> fileList = new ArrayList<>();
         List<String> tempList = new ArrayList<>();
         String path = contantsFromYaml.getFilepath() + "photowall";
@@ -93,7 +100,7 @@ public class PhotoServiceImpl implements PhotoService {
             tempList = Arrays.asList(filePath.list());
             for (String fileName : tempList
             ) {
-                fileList.add("/img/" + fileName);
+                fileList.add("http://localhost:" + port + "/img/photowall/" + fileName);
             }
         }
         return fileList;
