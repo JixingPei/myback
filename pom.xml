@@ -61,4 +61,17 @@
             </plugin>
         </plugins>
     </build>
+    <distributionManagement>
+        <repository>
+            <id>maven-release</id>
+            <name>Github Release Repository</name>
+            <url>https://maven.pkg.github.com/JixingPei/</url>
+            <uniqueVersion>true</uniqueVersion>
+        </repository>
+        <snapshotRepository>
+            <id>nexus</id>
+            <name>snapshots</name>
+            <url>https://maven.pkg.github.com/JixingPei/</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>
