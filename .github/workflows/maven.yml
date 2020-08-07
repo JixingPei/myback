@@ -5,9 +5,9 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ master ]
+    branches: [ release ]
   pull_request:
-    branches: [ master ]
+    branches: [ release ]
 
 jobs:
   build:
@@ -22,3 +22,13 @@ jobs:
         java-version: 11
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+    # Deploy
+#    - name: Deploy
+#      uses: easingthemes/ssh-deploy@v2.0.7
+#      env:
+#        SSH_PRIVATE_KEY: ${{ secrets.ACCESS_TOKEN }}
+#        ARGS: "-avz --delete"
+#        SOURCE: "[Current File Dir]"
+#        REMOTE_HOST: "[Domain]"
+#        REMOTE_USER: "[UserName]"
+#        TARGET: "[Server Dir]"
