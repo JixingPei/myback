@@ -65,7 +65,7 @@
         <repository>
             <id>github</id>
             <name>GitHub OWNER Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/JixingPei/REPOSITORY</url>
+            <url>https://maven.pkg.github.com/JixingPei/</url>
         </repository>
     </distributionManagement>
 </project>
