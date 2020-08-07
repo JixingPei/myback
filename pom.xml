@@ -61,5 +61,11 @@
             </plugin>
         </plugins>
     </build>
-
+    <distributionManagement>
+        <repository>
+            <id>maven-release</id>
+            <name>Github Release Repository</name>
+            <url>https://maven.pkg.github.com/JixingPei/</url>
+        </repository>
+    </distributionManagement>
 </project>
