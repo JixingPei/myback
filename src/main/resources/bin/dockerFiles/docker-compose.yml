@@ -1,0 +1,21 @@
+# yaml 配置实例
+version: '0.0.1'
+services:
+  myfront:
+    build:
+      context: ./
+      dockerfile: Dockerfile_front
+    ports:
+    - "80:9528"
+    volumes:
+    - /opt/myphoto/myfront:/opt/myphoto/myfront
+    image: myfront
+  myback:
+    image: myback
+    build:
+      context: ./
+      dockerfile: Dockerfile_back
+      ports:
+        - "9999:8888"
+      volumes:
+        - /opt/myphoto/myback:/opt/myphoto/myback
