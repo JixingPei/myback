@@ -1,5 +1,5 @@
 server:
-  port: 8888
+  port: 9999
   #spring:
   #  profiles:
   #    active: aeolian
@@ -34,6 +34,6 @@ server:
 
 
 oldpei:
-  filepath: F:\develop\image\
+  filepath: /opt/myphoto/photo/
   expiretime: 36000000
   tokensecret: oldpeisecret

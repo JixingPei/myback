@@ -9,13 +9,14 @@ services:
     - "80:9528"
     volumes:
     - /opt/myphoto/myfront:/opt/myphoto/myfront
-    image: myfront
+    - /opt/myphoto/nginx/config/nginx.conf:/etc/nginx/nginx.conf
+    image: myfront:0.0.1
   myback:
-    image: myback
+    image: myback:0.0.1
     build:
       context: ./
       dockerfile: Dockerfile_back
       ports:
-        - "9999:8888"
+        - "9999:9999"
       volumes:
-        - /opt/myphoto/myback:/opt/myphoto/myback
+        - /opt/myphoto/photo/:/opt/myphoto/photo/
