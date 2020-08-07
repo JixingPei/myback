@@ -15,7 +15,7 @@ jobs:
     runs-on: centos-latest
 
     steps:
-    - uses: Build
+      - uses: actions/checkout@v2
     - name: myback
       uses: actions/setup-java@v1
       with:
