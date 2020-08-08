@@ -74,7 +74,7 @@ public class PhotoServiceImpl implements PhotoService {
             SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
             date = formatter.format(calendar.getTime());
         }
-        String newPath = path + date + "\\";
+        String newPath = path + date + "/";
         File newDir = new File(newPath);
         if (!newDir.exists()) {
             newDir.mkdirs(); // 目录不存在的情况下，创建目录
