@@ -42,7 +42,7 @@ public class PhotoServiceImpl implements PhotoService {
             List<String> tempList = Arrays.asList(new File(contantsFromYaml.getFilepath() + dateLiat.get(i)).list());
             if (CommonUtils.listNonNull(tempList)) {
                 for (int j = 0; j < tempList.size(); j++) {
-                    tempFileList.add("http://localhost:" + port + "/img/" + dateLiat.get(i) + "/" + tempList.get(j));
+                    tempFileList.add("http://oldpei.icu/web/img/" + dateLiat.get(i) + "/" + tempList.get(j));
                 }
             }
             filePathNamrList.add(tempFileList);
@@ -100,7 +100,7 @@ public class PhotoServiceImpl implements PhotoService {
             tempList = Arrays.asList(filePath.list());
             for (String fileName : tempList
             ) {
-                fileList.add("http://localhost:" + port + "/img/photowall/" + fileName);
+                fileList.add("http://oldpei.icu/web/img/photowall/" + fileName);
             }
         }
         return fileList;

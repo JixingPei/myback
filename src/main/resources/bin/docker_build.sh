@@ -2,7 +2,7 @@
 
 
 #compose 安装
-sudo curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 #将可执行权限应用于二进制文件：
 sudo chmod +x /usr/local/bin/docker-compose
 #创建软链：

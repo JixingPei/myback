@@ -21,7 +21,7 @@ public class MyPhotoController {
     @Autowired
     PhotoService photoService;
 
-    @GetMapping("photowall")
+    @GetMapping("/photowall")
     public ModelMap getPhotoWall() {
         ModelMap model = new ModelMap();
         List<String> filePathNameList = photoService.getPhotoWall();
