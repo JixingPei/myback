@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration monitorInterval="5">
+    <Properties>
+        <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+        <property name="FILE_PATH" value="/opt/myphoto/logs/" />
+        <property name="BACKUP_PATH" value="backup" />
+        <property name="FILE_NAME" value="papy-log" />
+    </Properties>
+
+    <appenders>
+        <console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <ThresholdFilter level="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
+        </console>
+
+        <RollingFile name="RollingFileInfo" fileName="${FILE_PATH}/back_info.log" filePattern="${FILE_PATH}/${BACKUP_PATH}/back_info_%d{yyyyMMdd}_%i.log">
+            <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="5MB" />
+            </Policies>
+            <DefaultRolloverStrategy max="999" />
+        </RollingFile>
+
+        <RollingFile name="RollingFileError" fileName="${FILE_PATH}/back_err.log" filePattern="${FILE_PATH}/${BACKUP_PATH}/back_err_%d{yyyyMMdd}_%i.log">
+            <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10KB" />
+            </Policies>
+            <DefaultRolloverStrategy max="999" />
+        </RollingFile>
+    </appenders>
+
+    <loggers>
+        <logger name="com.oldpei.myback.dao" level="debug" additivity="false">
+            <AppenderRef ref="Console"/>
+        </logger>
+        <Logger name="org.springframework" level="info" additivity="false">
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <root level="info">
+            <appender-ref ref="Console"/>
+            <appender-ref ref="RollingFileInfo"/>
+            <appender-ref ref="RollingFileError"/>
+        </root>
+    </loggers>
+
+</configuration>

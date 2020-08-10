@@ -1,8 +1,13 @@
 package com.oldpei.myback.controller;
 
+import com.oldpei.myback.model.CustomerPhoto;
+import com.oldpei.myback.model.ResultModel;
 import com.oldpei.myback.service.PhotoService;
-import com.oldpei.myback.utils.CommonUtils;
+import com.oldpei.myback.utils.constant.ConstantMessage;
+import com.oldpei.myback.utils.publicTools.CommonUtils;
 import com.oldpei.myback.utils.constant.ConstantCode;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +20,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-public class MyPhotoController {
+public class PhotoController extends BaseController{
+    private Logger logger = LoggerFactory.getLogger(PhotoController.class);
 
     @Autowired
     PhotoService photoService;
@@ -24,7 +30,7 @@ public class MyPhotoController {
     public ModelMap getPhotoWall() {
         ModelMap model = new ModelMap();
         List<String> filePathNameList = photoService.getPhotoWall();
-        model.addAttribute("code", ConstantCode.succeed_code);
+        model.addAttribute("code", ConstantCode.SUCCEED_CODE);
         model.addAttribute("filePathNameList", filePathNameList);
         return model;
     }
@@ -38,17 +44,18 @@ public class MyPhotoController {
         if (CommonUtils.listNonNull(dateList)) {
             filePathNameList = photoService.getFilePathNamrList(dateList);
         }
-        model.addAttribute("code", ConstantCode.succeed_code);
+        model.addAttribute("code", ConstantCode.SUCCEED_CODE);
         model.addAttribute("dateList", dateList);
         model.addAttribute("filePathNameList", filePathNameList);
         return model;
     }
 
     @PostMapping("/uploadPhoto")
-    public ModelMap uploadPhoto(@RequestParam("file") MultipartFile file, Photo photo) {
-        photoService.uploadPhoto(file, photo);
-        ModelMap model = new ModelMap();
-        model.addAttribute("code", ConstantCode.succeed_code);
+    public ResultModel uploadPhoto(@RequestParam("file") MultipartFile file, CustomerPhoto photo) {
+        ResultModel model = new ResultModel();
+        model.setCode(ConstantCode.SUCCEED_CODE);
+        model.setMessage(ConstantMessage.MESSAGE_SUCCEED_CODE);
+        logger.info(""+photoService.uploadPhoto(file, photo));
         return model;
     }
 

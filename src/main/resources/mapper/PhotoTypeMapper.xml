@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.oldpei.myback.dao.PhotoTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.oldpei.myback.model.PhotoType" >
+    <constructor >
+      <idArg column="unique_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="type" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="active_flg" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="sys_insert_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="sys_insert_date" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="sys_update_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="sys_update_date" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    unique_id, type, active_flg, sys_insert_id, sys_insert_date, sys_update_id, sys_update_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_phototype
+    where unique_id = #{uniqueId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_phototype
+    where unique_id = #{uniqueId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.oldpei.myback.model.PhotoType" >
+    insert into t_phototype (unique_id, type, active_flg, 
+      sys_insert_id, sys_insert_date, sys_update_id, 
+      sys_update_date)
+    values (#{uniqueId,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, #{activeFlg,jdbcType=CHAR}, 
+      #{sysInsertId,jdbcType=VARCHAR}, #{sysInsertDate,jdbcType=TIMESTAMP}, #{sysUpdateId,jdbcType=VARCHAR}, 
+      #{sysUpdateDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.oldpei.myback.model.PhotoType" >
+    insert into t_phototype
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uniqueId != null" >
+        unique_id,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="activeFlg != null" >
+        active_flg,
+      </if>
+      <if test="sysInsertId != null" >
+        sys_insert_id,
+      </if>
+      <if test="sysInsertDate != null" >
+        sys_insert_date,
+      </if>
+      <if test="sysUpdateId != null" >
+        sys_update_id,
+      </if>
+      <if test="sysUpdateDate != null" >
+        sys_update_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uniqueId != null" >
+        #{uniqueId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="activeFlg != null" >
+        #{activeFlg,jdbcType=CHAR},
+      </if>
+      <if test="sysInsertId != null" >
+        #{sysInsertId,jdbcType=VARCHAR},
+      </if>
+      <if test="sysInsertDate != null" >
+        #{sysInsertDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sysUpdateId != null" >
+        #{sysUpdateId,jdbcType=VARCHAR},
+      </if>
+      <if test="sysUpdateDate != null" >
+        #{sysUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.oldpei.myback.model.PhotoType" >
+    update t_phototype
+    <set >
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="activeFlg != null" >
+        active_flg = #{activeFlg,jdbcType=CHAR},
+      </if>
+      <if test="sysInsertId != null" >
+        sys_insert_id = #{sysInsertId,jdbcType=VARCHAR},
+      </if>
+      <if test="sysInsertDate != null" >
+        sys_insert_date = #{sysInsertDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sysUpdateId != null" >
+        sys_update_id = #{sysUpdateId,jdbcType=VARCHAR},
+      </if>
+      <if test="sysUpdateDate != null" >
+        sys_update_date = #{sysUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where unique_id = #{uniqueId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.oldpei.myback.model.PhotoType" >
+    update t_phototype
+    set type = #{type,jdbcType=VARCHAR},
+      active_flg = #{activeFlg,jdbcType=CHAR},
+      sys_insert_id = #{sysInsertId,jdbcType=VARCHAR},
+      sys_insert_date = #{sysInsertDate,jdbcType=TIMESTAMP},
+      sys_update_id = #{sysUpdateId,jdbcType=VARCHAR},
+      sys_update_date = #{sysUpdateDate,jdbcType=TIMESTAMP}
+    where unique_id = #{uniqueId,jdbcType=INTEGER}
+  </update>
+</mapper>

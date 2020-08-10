@@ -72,7 +72,12 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <table tableName="t_photo" domainObjectName="Photo" enableCountByExample="false"
+<!--        <table tableName="t_photo" domainObjectName="Photo" enableCountByExample="false"-->
+<!--               enableDeleteByExample="false" enableUpdateByExample="false" enableSelectByExample="false">-->
+<!--            &lt;!&ndash;区分大小写，与数据库保持一致&ndash;&gt;-->
+<!--            <property name="useActualColumnNames" value="false"/>-->
+<!--        </table>-->
+        <table tableName="t_phototype" domainObjectName="PhotoType" enableCountByExample="false"
                enableDeleteByExample="false" enableUpdateByExample="false" enableSelectByExample="false">
             <!--区分大小写，与数据库保持一致-->
             <property name="useActualColumnNames" value="false"/>

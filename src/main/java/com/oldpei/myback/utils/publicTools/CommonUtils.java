@@ -1,4 +1,4 @@
-package com.oldpei.myback.utils;
+package com.oldpei.myback.utils.publicTools;
 
 import java.util.List;
 import java.util.Objects;
@@ -48,6 +48,18 @@ public class CommonUtils {
             return true;
         } else {
             return false;
+        }
+    }
+
+    public static String getFileExtension(String fileName) {
+        if (!strIsEmpty(fileName) && fileName.contains(".")) {
+            int i = fileName.lastIndexOf('.');
+            if (i == fileName.length() - 1) {
+                return "";
+            }
+            return fileName.substring(i + 1);
+        } else {
+            return "";
         }
     }
 }
