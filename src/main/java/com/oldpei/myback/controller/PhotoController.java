@@ -54,7 +54,6 @@ public class PhotoController extends BaseController{
     public ResultModel uploadPhoto(@RequestParam("file") MultipartFile file, CustomerPhoto photo) {
         ResultModel model = new ResultModel();
         model.setCode(ConstantCode.SUCCEED_CODE);
-        model.setMessage(ConstantMessage.MESSAGE_SUCCEED_CODE);
         logger.info(""+photoService.uploadPhoto(file, photo));
         return model;
     }
