@@ -14,7 +14,7 @@ import java.util.List;
 @Configuration
 public class MyWebMvcConfigurer implements WebMvcConfigurer {
     @Autowired
-    private ContantsFromYaml contants;
+    private ConstantsFromYaml contants;
     @Autowired
     private MyInterceptor myInterceptor;
     /**

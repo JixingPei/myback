@@ -13,11 +13,20 @@ import org.springframework.context.annotation.PropertySource;
 @Configuration
 @ConfigurationProperties(prefix = "oldpei")
 @PropertySource(value = {"classpath:application.yml"}, factory = YamlConfigFactory.class)
-public class ContantsFromYaml {
+public class ConstantsFromYaml {
 
     private String filepath;
     private String expiretime;
     private String tokensecret;
+    private String domain;
+
+    public String getDomain() {
+        return domain;
+    }
+
+    public void setDomain(String domain) {
+        this.domain = domain;
+    }
 
     public String getFilepath() {
         return filepath;

@@ -1,6 +1,6 @@
 package com.oldpei.myback.service.impl;
 
-import com.oldpei.myback.configs.ContantsFromYaml;
+import com.oldpei.myback.configs.ConstantsFromYaml;
 import com.oldpei.myback.model.Photo;
 import com.oldpei.myback.service.PhotoService;
 import com.oldpei.myback.utils.CommonUtils;
@@ -17,14 +17,14 @@ import java.util.*;
 @Service
 public class PhotoServiceImpl implements PhotoService {
     @Autowired
-    ContantsFromYaml contantsFromYaml;
+    ConstantsFromYaml constantsFromYaml;
     @Autowired
     Environment environment;
 
 
     @Override
     public List<String> getFileDate() {
-        String filePath = contantsFromYaml.getFilepath();
+        String filePath = constantsFromYaml.getFilepath();
         if (new File(filePath).exists()) {
             return Arrays.asList((new File(filePath)).list());
         } else {
@@ -37,12 +37,13 @@ public class PhotoServiceImpl implements PhotoService {
         String port = environment.getProperty("local.server.port");
         List<List> filePathNamrList = new ArrayList<>();
         List<String> tempFileList;
+        String domain = constantsFromYaml.getDomain();
         for (int i = 0; i < dateLiat.size(); i++) {
             tempFileList = new ArrayList<>();
-            List<String> tempList = Arrays.asList(new File(contantsFromYaml.getFilepath() + dateLiat.get(i)).list());
+            List<String> tempList = Arrays.asList(new File(constantsFromYaml.getFilepath() + dateLiat.get(i)).list());
             if (CommonUtils.listNonNull(tempList)) {
                 for (int j = 0; j < tempList.size(); j++) {
-                    tempFileList.add("http://oldpei.icu/web/img/" + dateLiat.get(i) + "/" + tempList.get(j));
+                    tempFileList.add(domain + "img/" + dateLiat.get(i) + "/" + tempList.get(j));
                 }
             }
             filePathNamrList.add(tempFileList);
@@ -66,7 +67,7 @@ public class PhotoServiceImpl implements PhotoService {
         // 获取文件的扩展名
         // String extension = FilenameUtils.getExtension(fileName);
         // 获取配置路径
-        String path = contantsFromYaml.getFilepath();
+        String path = constantsFromYaml.getFilepath();
         String date = photo.getDate();
         if (CommonUtils.strIsEmpty(date)) {
             // get current instance of the calendar
@@ -80,7 +81,6 @@ public class PhotoServiceImpl implements PhotoService {
             newDir.mkdirs(); // 目录不存在的情况下，创建目录
         }
         File newFile = new File(newDir, fileName);
-        //通过CommonsMultipartFile的方法直接写文件（注意这个时候）
         try {
             file.transferTo(newFile);
         } catch (IOException e) {
@@ -93,14 +93,15 @@ public class PhotoServiceImpl implements PhotoService {
     public List<String> getPhotoWall() {
         String port = environment.getProperty("local.server.port");
         List<String> fileList = new ArrayList<>();
-        List<String> tempList = new ArrayList<>();
-        String path = contantsFromYaml.getFilepath() + "photowall";
+        List<String> tempList;
+        String path = constantsFromYaml.getFilepath() + "photowall";
         File filePath = new File(path);
+        String domain = constantsFromYaml.getDomain();
         if (Objects.nonNull(filePath.list())) {
             tempList = Arrays.asList(filePath.list());
             for (String fileName : tempList
             ) {
-                fileList.add("http://oldpei.icu/web/img/photowall/" + fileName);
+                fileList.add(domain + "img/" + "photowall/" + fileName);
             }
         }
         return fileList;

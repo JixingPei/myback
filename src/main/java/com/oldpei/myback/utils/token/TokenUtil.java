@@ -2,7 +2,7 @@ package com.oldpei.myback.utils.token;
 
 import java.util.Date;
 
-import com.oldpei.myback.configs.ContantsFromYaml;
+import com.oldpei.myback.configs.ConstantsFromYaml;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ public class TokenUtil {
 	private static final Logger LOGGER = LoggerFactory.getLogger(TokenUtil.class);
 
     @Autowired
-    private ContantsFromYaml contantsFromYaml;
+    private ConstantsFromYaml contantsFromYaml;
 
     /**
      * create key

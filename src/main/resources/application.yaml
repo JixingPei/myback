@@ -1,5 +1,50 @@
+spring:
+  profiles:
+    active: test
+  devtools:
+    restart:
+      enabled: true  #设置开启热部署
+      additional-paths: src/main/java #重启目录
+  freemarker:
+    cache: false    #页面不加载缓存，修改即时生效
+
+
+---
+spring:
+  profiles: test
+oldpei:
+  filepath: C:\Users\jixing.pei\Desktop\img\
+  expiretime: 36000000
+  tokensecret: oldpeisecret
+  domain: "http://10.143.3.122:9999/"
 server:
   port: 9999
+
+
+---
+spring:
+  profiles: dev
+oldpei:
+  filepath:
+  expiretime: 36000000
+  tokensecret: oldpeisecret
+  domain: ""
+server:
+  port: 9999
+
+
+---
+spring:
+  profiles: prod
+oldpei:
+  filepath: /opt/myphoto/photo/
+  expiretime: 36000000
+  tokensecret: oldpeisecret
+  domain: "http://oldpei.icu/web/img/"
+server:
+  port: 9999
+
+
   #spring:
   #  profiles:
   #    active: aeolian
@@ -8,13 +53,6 @@ server:
   #    username: root
   #    password: 1234
   #    driver-class-name: com.mysql.cj.jdbc.Driver
-
-  devtools:
-    restart:
-      enabled: true  #设置开启热部署
-      additional-paths: src/main/java #重启目录
-  freemarker:
-    cache: false    #页面不加载缓存，修改即时生效
 
 #mybatis:
 #  mapper-locations: mapper/*.xml
@@ -31,9 +69,3 @@ server:
 #  max-idle: 20
 #  min-dile: 0
 #  timeout: 3000
-
-
-oldpei:
-  filepath: /opt/myphoto/photo/
-  expiretime: 36000000
-  tokensecret: oldpeisecret
