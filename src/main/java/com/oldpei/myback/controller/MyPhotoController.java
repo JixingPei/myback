@@ -1,6 +1,5 @@
 package com.oldpei.myback.controller;
 
-import com.oldpei.myback.model.Photo;
 import com.oldpei.myback.service.PhotoService;
 import com.oldpei.myback.utils.CommonUtils;
 import com.oldpei.myback.utils.constant.ConstantCode;

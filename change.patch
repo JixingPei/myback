@@ -1,0 +1,13 @@
+Index: .github/workflows/maven-publish.yml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .github/workflows/maven-publish.yml	(revision 512ad120a0416735fd945c81bbcc51d86f362bef)
++++ .github/workflows/maven-publish.yml	(date 1596768359837)
+@@ -25,4 +25,4 @@
+       run: mvn -B package --file pom.xml
+ 
+     - name: Publish to GitHub Packages Apache Maven
+-      run: mvn deploy -Dregistry=https://maven.pkg.github.com/JixingPei -Dtoken=GH_TOKEN
++      run: mvn deploy -Dregistry=https://maven.pkg.github.com/JixingPei -Dtoken=GH_TOKEN -DaltDeployementRepositoty=https://maven.pkg.github.com/JixingPei/

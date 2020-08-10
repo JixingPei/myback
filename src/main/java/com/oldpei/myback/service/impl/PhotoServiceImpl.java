@@ -1,7 +1,6 @@
 package com.oldpei.myback.service.impl;
 
 import com.oldpei.myback.configs.ConstantsFromYaml;
-import com.oldpei.myback.model.Photo;
 import com.oldpei.myback.service.PhotoService;
 import com.oldpei.myback.utils.CommonUtils;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,5 @@
 package com.oldpei.myback.service;
 
-import com.oldpei.myback.model.Photo;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
