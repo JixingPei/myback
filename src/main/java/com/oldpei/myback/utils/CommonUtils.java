@@ -1,4 +1,4 @@
-package com.oldpei.myback.utils.publicTools;
+package com.oldpei.myback.utils;
 
 import java.util.List;
 import java.util.Objects;
@@ -18,7 +18,7 @@ public class CommonUtils {
      * @return String
      */
     public static boolean strIsEmpty(String str) {
-        if (null == str || str.isEmpty()) {
+        if (Objects.isNull(str) || str.isEmpty()) {
             return true;
         }
         return false;

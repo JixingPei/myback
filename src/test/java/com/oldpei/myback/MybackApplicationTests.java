@@ -1,6 +1,6 @@
 package com.oldpei.myback;
 
-import com.oldpei.myback.utils.publicTools.CommonUtils;
+import com.oldpei.myback.utils.CommonUtils;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

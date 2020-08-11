@@ -3,7 +3,7 @@ package com.oldpei.myback.configs;
 import java.io.IOException;
 import java.util.Properties;
 
-import com.oldpei.myback.utils.publicTools.CommonUtils;
+import com.oldpei.myback.utils.CommonUtils;
 import org.springframework.beans.factory.config.YamlPropertiesFactoryBean;
 import org.springframework.core.env.PropertiesPropertySource;
 import org.springframework.core.env.PropertySource;

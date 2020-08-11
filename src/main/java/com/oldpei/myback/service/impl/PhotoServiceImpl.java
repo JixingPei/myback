@@ -3,9 +3,11 @@ package com.oldpei.myback.service.impl;
 import com.oldpei.myback.configs.ConstantsFromYaml;
 import com.oldpei.myback.dao.CustomerPhotoMapper;
 import com.oldpei.myback.model.CustomerPhoto;
+import com.oldpei.myback.model.CustomerPhotoType;
 import com.oldpei.myback.service.PhotoService;
-import com.oldpei.myback.utils.publicTools.CommonUtils;
-import com.oldpei.myback.utils.constant.ConstantCode;
+import com.oldpei.myback.service.PhotoTypeService;
+import com.oldpei.myback.utils.CommonUtils;
+import com.oldpei.myback.utils.ConstantCode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,8 @@ public class PhotoServiceImpl implements PhotoService {
     private Logger logger = LoggerFactory.getLogger(PhotoServiceImpl.class);
     @Autowired
     private CustomerPhotoMapper photoMapper;
+    @Autowired
+    private PhotoTypeService photoTypeService;
     @Autowired
     private ConstantsFromYaml constantsFromYaml;
     @Autowired
@@ -84,7 +88,8 @@ public class PhotoServiceImpl implements PhotoService {
             return resultCode;
         }
         photo.setName(fileName);
-        photo.setPath(newFilePathName);
+        String domain = constantsFromYaml.getDomain();
+        photo.setPath( domain+"img/" + photo.getDate() + "/" + fileName);
         resultCode = insertWithoutUniqueId(photo) > 0 ? ConstantCode.SUCCEED_CODE : ConstantCode.SQL_INSERT_FAILED;
         return resultCode;
     }
@@ -113,6 +118,38 @@ public class PhotoServiceImpl implements PhotoService {
         return photoMapper.insertWithoutUniqueId(record);
     }
 
+    @Override
+    public List<CustomerPhoto> getAllPhoto() {
+        return photoMapper.getAllPhoto();
+    }
+
+    @Override
+    public Map<String, List<CustomerPhoto>> orderByType(List<CustomerPhoto> photoList) {
+        List<CustomerPhotoType> typeList = photoTypeService.getAllPhotoType();
+        Map<String, List<CustomerPhoto>> map = new HashMap<>(typeList.size() + 1);
+        for (CustomerPhotoType photoType : typeList
+        ) {
+            map.put(photoType.getType(), new ArrayList<>());
+        }
+        map.put("空", new ArrayList<>());
+        for (CustomerPhoto photo :
+                photoList
+        ) {
+            if (CommonUtils.strIsEmpty(photo.getType())) {
+                map.get("空").add(photo);
+            } else {
+                if (Objects.nonNull(map.get(photo.getType()))) {
+                    map.get(photo.getType()).add(photo);
+                }
+            }
+        }
+        return map;
+    }
+
+    @Override
+    public int updateTypeOfPhoto(CustomerPhoto photo) {
+        return photoMapper.updateTypeOfPhoto(photo);
+    }
 
     public int createFiles(String newFilePathName, MultipartFile file) {
         File newFile = new File(newFilePathName);

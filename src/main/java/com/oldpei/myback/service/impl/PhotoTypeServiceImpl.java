@@ -7,7 +7,6 @@ import com.oldpei.myback.service.PhotoTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 @Service
 public class PhotoTypeServiceImpl implements PhotoTypeService {
@@ -23,4 +22,15 @@ public class PhotoTypeServiceImpl implements PhotoTypeService {
     public int addPhotoType(CustomerPhotoType photoType) {
         return photoTypeMapper.addPhotoType(photoType);
     }
+
+    @Override
+    public int updatePhotoType(CustomerPhotoType photoType) {
+        return photoTypeMapper.updatePhotoType(photoType);
+    }
+
+    @Override
+    public int deletePhotoTypeById(CustomerPhotoType photoType) {
+        return photoTypeMapper.deletePhotoTypeById(photoType);
+    }
+
 }

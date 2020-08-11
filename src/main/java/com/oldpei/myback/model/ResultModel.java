@@ -1,6 +1,6 @@
 package com.oldpei.myback.model;
 
-import com.oldpei.myback.utils.constant.ConstantMessage;
+import com.oldpei.myback.utils.ConstantMessage;
 
 import java.util.ArrayList;
 import java.util.List;

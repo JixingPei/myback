@@ -1,4 +1,4 @@
-package com.oldpei.myback.utils.constant;
+package com.oldpei.myback.utils;
 
 /**
  * @author jixing.pei
@@ -11,6 +11,8 @@ public class ConstantCode {
     public static final int FILE_ALREADY_EXISTS = 20004;
     public static final int FILE_CREATION_FAILED = 20005;
     public static final int SQL_INSERT_FAILED = 20006;
+    public static final int SQL_UPDATE_FAILED = 20007;
+    public static final int SQL_DELETE_FAILED = 20008;
 
 
 }

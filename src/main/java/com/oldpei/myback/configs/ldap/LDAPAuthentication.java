@@ -1,4 +1,4 @@
-//package com.oldpei.myback.utils.ldap;
+//package com.oldpei.myback.configs.ldap;
 //
 //import java.util.Hashtable;
 //

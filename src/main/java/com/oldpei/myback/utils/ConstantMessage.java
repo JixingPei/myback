@@ -1,4 +1,4 @@
-package com.oldpei.myback.utils.constant;
+package com.oldpei.myback.utils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,6 +18,9 @@ public class ConstantMessage {
         MAP.put(ConstantCode.FILE_ALREADY_EXISTS,"上传文件已经存在");
         MAP.put(ConstantCode.FILE_CREATION_FAILED,"创建文件失败");
         MAP.put(ConstantCode.SQL_INSERT_FAILED,"插入数据失败");
+        MAP.put(ConstantCode.SQL_UPDATE_FAILED,"更新数据失败");
+        MAP.put(ConstantCode.SQL_DELETE_FAILED,"删除数据失败");
+
     }
 
 }

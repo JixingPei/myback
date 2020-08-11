@@ -1,4 +1,4 @@
-package com.oldpei.myback.utils.token;
+package com.oldpei.myback.configs.token;
 
 import java.util.Date;
 

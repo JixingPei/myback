@@ -12,7 +12,7 @@
             <arg column="sys_update_date" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
         </constructor>
     </resultMap>
-    <insert id="addPhotoType">
+    <insert id="addPhotoType" parameterType="com.oldpei.myback.model.CustomerPhotoType">
         insert into myphoto.t_phototype (type, active_flg,
         sys_insert_id, sys_insert_date, sys_update_id,
         sys_update_date)
@@ -20,8 +20,36 @@
         #{sysInsertId,jdbcType=VARCHAR}, #{sysInsertDate,jdbcType=TIMESTAMP}, #{sysUpdateId,jdbcType=VARCHAR},
         #{sysUpdateDate,jdbcType=TIMESTAMP})
     </insert>
-    <select id="getAllPhotoType" resultType="com.oldpei.myback.model.CustomerPhotoType">
-        select type from myphoto.t_phototype;
+    <select id="getAllPhotoType" resultMap="BaseResultMap">
+        select * from myphoto.t_phototype;
     </select>
+    <update id="updatePhotoType" parameterType="com.oldpei.myback.model.CustomerPhotoType">
+        update myphoto.t_phototype
+        <set>
+            <if test="type != null">
+                type = #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="activeFlg != null">
+                active_flg = #{activeFlg,jdbcType=CHAR},
+            </if>
+            <if test="sysInsertId != null">
+                sys_insert_id = #{sysInsertId,jdbcType=VARCHAR},
+            </if>
+            <if test="sysInsertDate != null">
+                sys_insert_date = #{sysInsertDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="sysUpdateId != null">
+                sys_update_id = #{sysUpdateId,jdbcType=VARCHAR},
+            </if>
+            <if test="sysUpdateDate != null">
+                sys_update_date = #{sysUpdateDate,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where unique_id = #{uniqueId,jdbcType=INTEGER}
+    </update>
 
+    <delete id="deletePhotoTypeById" parameterType="com.oldpei.myback.model.CustomerPhotoType">
+        delete from myphoto.t_phototype
+        where unique_id = #{uniqueId,jdbcType=INTEGER}
+    </delete>
 </mapper>

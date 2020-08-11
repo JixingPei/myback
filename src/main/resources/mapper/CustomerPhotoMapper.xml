@@ -15,6 +15,7 @@
             <arg column="sys_update_date" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
         </constructor>
     </resultMap>
+
     <insert id="insertWithoutUniqueId" parameterType="com.oldpei.myback.model.CustomerPhoto">
         insert into myphoto.t_photo ( date, type,
         name, path, active_flg,
@@ -25,4 +26,19 @@
         #{sysInsertId,jdbcType=VARCHAR}, #{sysInsertDate,jdbcType=TIMESTAMP}, #{sysUpdateId,jdbcType=VARCHAR},
         #{sysUpdateDate,jdbcType=TIMESTAMP})
     </insert>
+    <select id="getAllPhoto" resultMap="BaseResultMap">
+        select * from myphoto.t_photo
+    </select>
+    <update id="updateTypeOfPhoto" parameterType="com.oldpei.myback.model.CustomerPhoto">
+        update myphoto.t_photo
+        <set>
+            <if test="type != null">
+                type = #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="sysUpdateDate != null">
+                sys_update_date = #{sysUpdateDate,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where type = #{oldType}
+    </update>
 </mapper>
