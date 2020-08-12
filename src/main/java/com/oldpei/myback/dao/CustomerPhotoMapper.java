@@ -13,4 +13,6 @@ public interface CustomerPhotoMapper extends PhotoMapper {
     List<CustomerPhoto> getAllPhoto();
 
     int updateTypeOfPhoto(CustomerPhoto photoType);
+
+    List<CustomerPhoto> getPhotoByType(String type);
 }

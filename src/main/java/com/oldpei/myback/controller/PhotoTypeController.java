@@ -67,6 +67,7 @@ public class PhotoTypeController extends BaseController {
         ResultModel<CustomerPhotoType> model = new ResultModel<>();
         int resultCode = photoTypeService.deletePhotoTypeById(photoType);
         if (resultCode > 0) {
+            photoService.deletePhotoByType(photoType.getType());
             List<CustomerPhotoType> list = model.getData();
             list.add(photoType);
             model.setData(list);

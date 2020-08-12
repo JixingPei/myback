@@ -88,8 +88,9 @@ public class PhotoServiceImpl implements PhotoService {
             return resultCode;
         }
         photo.setName(fileName);
+        photo.setStorage(newFilePathName);
         String domain = constantsFromYaml.getDomain();
-        photo.setPath( domain+"img/" + photo.getDate() + "/" + fileName);
+        photo.setPath(domain + "img/" + photo.getDate() + "/" + fileName);
         resultCode = insertWithoutUniqueId(photo) > 0 ? ConstantCode.SUCCEED_CODE : ConstantCode.SQL_INSERT_FAILED;
         return resultCode;
     }
@@ -149,6 +150,31 @@ public class PhotoServiceImpl implements PhotoService {
     @Override
     public int updateTypeOfPhoto(CustomerPhoto photo) {
         return photoMapper.updateTypeOfPhoto(photo);
+    }
+
+    @Override
+    public int deletePhotoByType(String type) {
+        List<CustomerPhoto> photoList = photoMapper.getPhotoByType(type);
+        int result = 0;
+        try {
+            for (CustomerPhoto photo : photoList
+            ) {
+                result = photoMapper.deleteByPrimaryKey(photo.getUniqueId());
+                deleteFile(photo.getStorage());
+            }
+        } catch (Exception e) {
+            logger.error("", e);
+            result = -1;
+        }
+        return result;
+    }
+
+    public boolean deleteFile(String filePathName) {
+        File file = new File(filePathName);
+        if (file.exists()) {
+            file.delete();
+        }
+        return true;
     }
 
     public int createFiles(String newFilePathName, MultipartFile file) {

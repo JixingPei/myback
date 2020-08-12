@@ -14,9 +14,8 @@
         insert into myphoto.t_phototype (type, active_flg,
         sys_insert_id, sys_insert_date, sys_update_id,
         sys_update_date)
-        values (#{type,jdbcType=VARCHAR}, #{activeFlg,jdbcType=CHAR},
-        #{sysInsertId,jdbcType=VARCHAR}, #{sysInsertDate,jdbcType=TIMESTAMP}, #{sysUpdateId,jdbcType=VARCHAR},
-        #{sysUpdateDate,jdbcType=TIMESTAMP})
+        values (#{type,jdbcType=VARCHAR}
+        ,'1','System',now(),'System',now())
     </insert>
     <select id="getAllPhotoType" resultMap="BaseResultMap">
         select unique_id,type from myphoto.t_phototype;
@@ -27,21 +26,7 @@
             <if test="type != null">
                 type = #{type,jdbcType=VARCHAR},
             </if>
-            <if test="activeFlg != null">
-                active_flg = #{activeFlg,jdbcType=CHAR},
-            </if>
-            <if test="sysInsertId != null">
-                sys_insert_id = #{sysInsertId,jdbcType=VARCHAR},
-            </if>
-            <if test="sysInsertDate != null">
-                sys_insert_date = #{sysInsertDate,jdbcType=TIMESTAMP},
-            </if>
-            <if test="sysUpdateId != null">
-                sys_update_id = #{sysUpdateId,jdbcType=VARCHAR},
-            </if>
-            <if test="sysUpdateDate != null">
-                sys_update_date = #{sysUpdateDate,jdbcType=TIMESTAMP},
-            </if>
+            sys_update_date = now()
         </set>
         where unique_id = #{uniqueId,jdbcType=INTEGER}
     </update>

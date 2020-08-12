@@ -2,30 +2,35 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.oldpei.myback.dao.CustomerPhotoMapper">
     <resultMap id="BaseResultMap" type="com.oldpei.myback.model.CustomerPhoto">
-        <id column="unique_id" jdbcType="INTEGER" property="uniqueId"/>
-        <result column="date" jdbcType="VARCHAR" property="date"/>
-        <result column="type" jdbcType="VARCHAR" property="type"/>
-        <result column="name" jdbcType="VARCHAR" property="name"/>
-        <result column="path" jdbcType="VARCHAR" property="path"/>
-        <result column="active_flg" jdbcType="CHAR" property="activeFlg"/>
-        <result column="sys_insert_id" jdbcType="VARCHAR" property="sysInsertId"/>
-        <result column="sys_insert_date" jdbcType="TIMESTAMP" property="sysInsertDate"/>
-        <result column="sys_update_id" jdbcType="VARCHAR" property="sysUpdateId"/>
-        <result column="sys_update_date" jdbcType="TIMESTAMP" property="sysUpdateDate"/>
+        <id column="unique_id" jdbcType="INTEGER" property="uniqueId" />
+        <result column="date" jdbcType="VARCHAR" property="date" />
+        <result column="type" jdbcType="VARCHAR" property="type" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="path" jdbcType="VARCHAR" property="path" />
+        <result column="storage" jdbcType="VARCHAR" property="storage" />
+        <result column="active_flg" jdbcType="CHAR" property="activeFlg" />
+        <result column="sys_insert_id" jdbcType="VARCHAR" property="sysInsertId" />
+        <result column="sys_insert_date" jdbcType="TIMESTAMP" property="sysInsertDate" />
+        <result column="sys_update_id" jdbcType="VARCHAR" property="sysUpdateId" />
+        <result column="sys_update_date" jdbcType="TIMESTAMP" property="sysUpdateDate" />
     </resultMap>
 
     <insert id="insertWithoutUniqueId" parameterType="com.oldpei.myback.model.CustomerPhoto">
-        insert into myphoto.t_photo ( date, type,
-        name, path, active_flg,
-        sys_insert_id, sys_insert_date, sys_update_id,
-        sys_update_date)
-        values ( #{date,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR},
-        #{name,jdbcType=VARCHAR}, #{path,jdbcType=VARCHAR}, #{activeFlg,jdbcType=CHAR},
-        #{sysInsertId,jdbcType=VARCHAR}, #{sysInsertDate,jdbcType=TIMESTAMP}, #{sysUpdateId,jdbcType=VARCHAR},
-        #{sysUpdateDate,jdbcType=TIMESTAMP})
+        insert into myphoto.t_photo (date, type,
+        name, path, storage,
+        active_flg, sys_insert_id, sys_insert_date,
+        sys_update_id, sys_update_date)
+        values (#{date,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR},
+        #{name,jdbcType=VARCHAR}, #{path,jdbcType=VARCHAR}, #{storage,jdbcType=VARCHAR},
+        '1','System',now(),'System',now())
     </insert>
     <select id="getAllPhoto" resultMap="BaseResultMap">
-        select * from myphoto.t_photo
+        select unique_id,path,type from myphoto.t_photo
+    </select>
+    <select id="getPhotoByType" resultMap="BaseResultMap">
+        select unique_id,storage
+        from myphoto.t_photo
+        where type = #{type,jdbcType=VARCHAR}
     </select>
     <update id="updateTypeOfPhoto" parameterType="com.oldpei.myback.model.CustomerPhoto">
         update myphoto.t_photo
@@ -34,7 +39,7 @@
                 type = #{type,jdbcType=VARCHAR},
             </if>
             <if test="sysUpdateDate != null">
-                sys_update_date = #{sysUpdateDate,jdbcType=TIMESTAMP},
+                sys_update_date = now(),
             </if>
         </set>
         where type = #{oldType}

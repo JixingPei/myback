@@ -25,4 +25,6 @@ public interface PhotoService {
     Map<String, List<CustomerPhoto>> orderByType(List<CustomerPhoto> photoList);
 
     int updateTypeOfPhoto(CustomerPhoto photo);
+
+    int deletePhotoByType(String type);
 }
