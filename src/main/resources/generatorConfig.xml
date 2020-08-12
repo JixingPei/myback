@@ -8,7 +8,7 @@
     <!-- 本地硬盘数据库驱动包 -->
     <!--    <classPathEntry-->
     <!--            location="D:\develop\apache\apache-maven-3.6.1\repository-pei\mysql\mysql-connector-java\8.0.15\mysql-connector-java-8.0.15.jar"/>-->
-    <classPathEntry location="C:\zhangben\maven-repository\org\postgresql\postgresql\42.2.14\postgresql-42.2.14.jar"/>
+    <classPathEntry location="F:\develop\apache-maven-3.6.3\repo\org\postgresql\postgresql\42.2.14\postgresql-42.2.14.jar"/>
 
     <context id="default" targetRuntime="MyBatis3Simple">
         <property name="createBy" value="OldPei"/>
