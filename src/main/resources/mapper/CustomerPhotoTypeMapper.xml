@@ -2,15 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.oldpei.myback.dao.CustomerPhotoTypeMapper">
     <resultMap id="BaseResultMap" type="com.oldpei.myback.model.CustomerPhotoType">
-        <constructor>
-            <idArg column="unique_id" jdbcType="INTEGER" javaType="java.lang.Integer"/>
-            <arg column="type" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="active_flg" jdbcType="CHAR" javaType="java.lang.String"/>
-            <arg column="sys_insert_id" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="sys_insert_date" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
-            <arg column="sys_update_id" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="sys_update_date" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
-        </constructor>
+        <id column="unique_id" jdbcType="INTEGER" property="uniqueId"/>
+        <result column="type" jdbcType="VARCHAR" property="type"/>
+        <result column="active_flg" jdbcType="CHAR" property="activeFlg"/>
+        <result column="sys_insert_id" jdbcType="VARCHAR" property="sysInsertId"/>
+        <result column="sys_insert_date" jdbcType="TIMESTAMP" property="sysInsertDate"/>
+        <result column="sys_update_id" jdbcType="VARCHAR" property="sysUpdateId"/>
+        <result column="sys_update_date" jdbcType="TIMESTAMP" property="sysUpdateDate"/>
     </resultMap>
     <insert id="addPhotoType" parameterType="com.oldpei.myback.model.CustomerPhotoType">
         insert into myphoto.t_phototype (type, active_flg,
@@ -21,7 +19,7 @@
         #{sysUpdateDate,jdbcType=TIMESTAMP})
     </insert>
     <select id="getAllPhotoType" resultMap="BaseResultMap">
-        select * from myphoto.t_phototype;
+        select unique_id,type from myphoto.t_phototype;
     </select>
     <update id="updatePhotoType" parameterType="com.oldpei.myback.model.CustomerPhotoType">
         update myphoto.t_phototype
